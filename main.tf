@@ -46,7 +46,7 @@ data "azurerm_log_analytics_workspace" "lwk" {
 ##
 
 module "datafactory" {
-  source = "git::https://github.alm.europe.cloudcenter.corp/sgt-cloudplatform/iac.az.blueprint.data-factory-sm.git?ref=v2.1.0"
+  source = "git::https://github.alm.europe.cloudcenter.corp/sgt-cloudplatform/iac.az.blueprint.data-factory-sm.git?ref=v2.2.5"
 
   name                              = var.adf_name
   subscriptionid                    = var.subscription_id
@@ -56,13 +56,16 @@ module "datafactory" {
   lwk_name                          = data.azurerm_log_analytics_workspace.lwk.name
   kvt_name                          = data.azurerm_key_vault.kvt.name
   analytics_diagnostic_monitor      = var.adf_analytics_diagnostic_monitor
-  adf_vnet_enabled                  = false
+  adf_vnet_enabled                  = var.adf_enable_public_access
   adf_public_network_access_enabled = var.adf_enable_public_access
-  key_name                          = var.adf_key_name
-  enable_cmk                        = false
+  #key_name                          = var.adf_key_name
+  #enable_cmk                        = false
   template_adanalytics_name         = "ADAnalytics"
-  cmk_identity                      = ""
+  #cmk_identity                      = var.adf_cmk_identity
   cia                               = var.cia
   description                       = var.adf_description
   tracking_code                     = var.tracking_code
+  user_assigned_identity_name       = ""
+  enable_adf_encryption             = false
+
 }

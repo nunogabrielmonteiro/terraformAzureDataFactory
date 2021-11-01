@@ -107,3 +107,9 @@ variable "adf_enable_public_access" {
   description = ""
   default = false
 }
+
+variable "adf_cmk_identity" {
+  type        = string
+  description = ""
+  default = ""
+}
