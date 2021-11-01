@@ -5,13 +5,11 @@
 *.tfstate
 *.tfstate.*
 
-<<<<<<< HEAD
 # modulos terraform
 *.terraform
 *.terraform.*
 
 =======
->>>>>>> b3d499cf96b80c3c38621fa701cc692ad9dd71d9
 # Crash log files
 crash.log
 
